@@ -46,4 +46,15 @@ describe("security boundaries", () => {
       await resolveInsideRepository(context, "migrations/new.sql", { allowMissing: true }),
     ).toBe(path.join(repo, "migrations/new.sql"));
   });
+
+  it("does not let caller-supplied environment replace executable search paths", async () => {
+    const repo = await mkdtemp(path.join(os.tmpdir(), "migrate-mcp-env-"));
+    const result = await new ProcessRunner().run({
+      executable: process.execPath,
+      args: ["-e", "process.stdout.write(process.env.PATH === '/attacker' ? 'unsafe' : 'safe')"],
+      cwd: repo,
+      env: { PATH: "/attacker", DATABASE_URL: "postgres://localhost/test" },
+    });
+    expect(result.stdout).toBe("safe");
+  });
 });

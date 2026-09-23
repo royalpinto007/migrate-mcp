@@ -82,7 +82,11 @@ function buildAllowedEnvironment(extra: Record<string, string> = {}): NodeJS.Pro
   const environment: NodeJS.ProcessEnv = {};
   for (const key of inherited)
     if (process.env[key] !== undefined) environment[key] = process.env[key];
-  for (const [key, value] of Object.entries(extra)) environment[key] = value;
+  const frameworkVariable =
+    /^(?:DATABASE_URL|DB_[A-Z0-9_]+|PG[A-Z0-9_]+|MYSQL[A-Z0-9_]+|PRISMA_[A-Z0-9_]+|TYPEORM_[A-Z0-9_]+|SEQUELIZE_[A-Z0-9_]+|ALEMBIC_[A-Z0-9_]+)$/;
+  for (const [key, value] of Object.entries(extra)) {
+    if (frameworkVariable.test(key)) environment[key] = value;
+  }
   environment.NO_COLOR = "1";
   environment.CI = "1";
   return environment;
