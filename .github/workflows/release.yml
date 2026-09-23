@@ -17,4 +17,16 @@ jobs:
           registry-url: https://registry.npmjs.org
       - run: npm ci
       - run: npm run check
-      - run: npm publish --provenance --access public
+      - name: Check registry
+        id: registry
+        shell: bash
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          if npm view "migrate-mcp@$version" version --userconfig /dev/null >/dev/null 2>&1; then
+            echo "published=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "published=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Publish package
+        if: steps.registry.outputs.published != 'true'
+        run: npm publish --provenance --access public
