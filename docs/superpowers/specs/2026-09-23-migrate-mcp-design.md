@@ -41,14 +41,14 @@ Version 0.0.1 does not:
 
 Implementation and fixtures are based on the following upstream repository revisions observed on 23 September 2026:
 
-| Framework | Upstream revision |
-| --- | --- |
+| Framework          | Upstream revision                          |
+| ------------------ | ------------------------------------------ |
 | MCP TypeScript SDK | `0b403f0e072eb49e5ee063bba606c492e2fe04f1` |
-| Alembic | `b42ebe1ff576e02b8bfc9ef1c3c3a5fd1ac41bf4` |
-| golang-migrate | `504568a3cbd23b8754760f55a3d89aec1b0c4963` |
-| TypeORM | `f279fd1367f24ad108a1b11cf833f1620274088d` |
-| Sequelize CLI | `679054aea251572ac7f6fa152f5d9eff9dbbbe9c` |
-| Prisma | `ca357d5d3e5b74c8247dd51d1dea40ebaec7f6a5` |
+| Alembic            | `b42ebe1ff576e02b8bfc9ef1c3c3a5fd1ac41bf4` |
+| golang-migrate     | `504568a3cbd23b8754760f55a3d89aec1b0c4963` |
+| TypeORM            | `f279fd1367f24ad108a1b11cf833f1620274088d` |
+| Sequelize CLI      | `679054aea251572ac7f6fa152f5d9eff9dbbbe9c` |
+| Prisma             | `ca357d5d3e5b74c8247dd51d1dea40ebaec7f6a5` |
 
 The package documentation will record supported command families rather than claiming compatibility with every past or future release. An offline maintenance script will detect upstream contract drift. It is never required during normal package use.
 
