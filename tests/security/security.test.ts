@@ -44,7 +44,7 @@ describe("security boundaries", () => {
     const context = await resolveRepository(repo);
     expect(
       await resolveInsideRepository(context, "migrations/new.sql", { allowMissing: true }),
-    ).toBe(path.join(repo, "migrations/new.sql"));
+    ).toBe(path.join(context.root, "migrations/new.sql"));
   });
 
   it("does not let caller-supplied environment replace executable search paths", async () => {

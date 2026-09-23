@@ -27,7 +27,7 @@
     "node": ">=22"
   },
   "bin": {
-    "migrate-mcp": "./dist/cli.mjs"
+    "migrate-mcp": "dist/cli.mjs"
   },
   "main": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
