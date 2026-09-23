@@ -1,7 +1,9 @@
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: ["dist/**", "coverage/**", ".superpowers/**", "eslint.config.js"] },
+  {
+    ignores: ["dist/**", "coverage/**", ".superpowers/**", "eslint.config.js", "scripts/demo.mjs"],
+  },
   ...tseslint.configs.strictTypeChecked,
   {
     languageOptions: {
