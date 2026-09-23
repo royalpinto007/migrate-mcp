@@ -12,13 +12,13 @@ import type { RepositoryContext } from "../security/repository.js";
 
 export interface AdapterContext {
   repository: RepositoryContext;
-  environment?: Record<string, string>;
+  environment?: Record<string, string> | undefined;
+  options?: Record<string, string | boolean> | undefined;
 }
 
 export interface GenerationInput extends AdapterContext {
   name: string;
   approved: true;
-  options?: Record<string, string | boolean>;
 }
 
 export interface MigrationAdapter {
